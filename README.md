@@ -1,50 +1,40 @@
-# Welcome to your Expo app 👋
+# Biometric Todo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A secure React Native Todo application that uses biometric authentication (FaceID / Fingerprint) for critical actions like adding, updating, or deleting tasks. Built with:
 
-## Get started
+- **React Native**
+- **Zustand** for global state management
+- **Expo Local Authentication** for biometric handling
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- Add, delete, toggle, and update todos.
+- Biometric authentication for critical actions.
+- Caching of successful authentication for 2 minutes.
+- Zustand state management.
+- Graceful fallback if biometric authentication is unavailable.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## Architecture Overview
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- `App.tsx`: Handles biometric authentication gate before rendering the `HomeScreen`.
+- `HomeScreen.tsx`: Main screen with input field, add button, and list of todos.
+- `TodoItem.tsx`: Displays individual todos with options to edit, toggle, and delete.
+- `TodoDisplay.tsx` & `TodoEditForm.tsx`: Conditionally rendered for view/edit modes.
+- `authenticateUser.ts`: Prompts biometric authentication and manages time-based bypass.
+- `useAuthenticationGate.ts`: Initial app gate to check for biometric availability and access.
+- `zustand store`: Manages todos, auth timestamps, and skip flags.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
-
-When you're ready, run:
+## Installation & Running
 
 ```bash
-npm run reset-project
-```
+# Install dependencies
+npm install
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Run on Expo
+npx expo start

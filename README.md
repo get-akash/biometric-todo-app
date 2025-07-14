@@ -38,3 +38,15 @@ npm install
 
 # Run on Expo
 npx expo start
+```
+
+---
+
+## Future Integrations
+
+We have a stub implementation for exploring advanced Expo local database usage. You can find this under:
+
+```bash
+future_integrations/initDB.ts
+```
+**Note:** This might be overkill for the current scope but is retained for future scaling or experimentation with local DBs like WatermelonDB or advanced SQLite usage.

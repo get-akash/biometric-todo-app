@@ -9,6 +9,8 @@ export default function App() {
     const setSkipAuthentication = useTodoStore((s) => s.setSkipAuthentication);
     const [isAccessGranted, isbiometricAvailable] = useAuthenticationGate();
 
+    // Initialize DB using useEffect and initDatabase function
+
     useEffect(()=>{
         if(!isbiometricAvailable && isAccessGranted){
             setSkipAuthentication(true)
